@@ -1,0 +1,56 @@
+{
+  "user": [
+    {
+      "id": "0a91",
+      "firstName": "cuong",
+      "lastName": "phan",
+      "email": "cuongphan.240104@gmail.com",
+      "password": "$2b$10$qn2OrzHyvZyJYef1f94ipum7De3k6FHKzI0VJz1o0G8BUz.XTlZ3W"
+    },
+    {
+      "id": "4cf0",
+      "firstName": "cuong",
+      "lastName": "Cuong",
+      "email": "cuong99058@donga.edu.vn",
+      "password": "$2b$10$wyv9Eeb41YQHuiCseEzzCeu0Fo4ksWRHXA6ELHeMuSwvuiG8ypXwG"
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "name": "Giày Nike Air Jordan",
+      "price": 120,
+      "titleProduct": "Với thiết kế mang tính biểu tượng kết hợp hoàn hảo với mọi 'fit', đôi giày này đảm bảo bạn sẽ luôn đúng phong cách.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Giày Nike Air Force 1",
+      "price": 135,
+      "titleProduct": "Đôi giày mang phong cách cổ điển và hiện đại cùng lúc.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Giày Adidas Superstar",
+      "price": 110,
+      "titleProduct": "Phong cách đường phố kết hợp độ bền vượt trội.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Giày Converse Chuck Taylor",
+      "price": 90,
+      "titleProduct": "Biểu tượng bất tử cho giới trẻ năng động.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Giày Vans Old Skool",
+      "price": 95,
+      "titleProduct": "Thiết kế tối giản nhưng không bao giờ lỗi thời.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg"
+    }
+  ],
+  "cart": []
+}
