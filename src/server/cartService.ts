@@ -1,28 +1,32 @@
-import { CartItem, ProductProps } from "../hook/useCart";
+// src/services/cartService.ts
 
-const CART_API = "http://localhost:3000/cart";
+import { ProductProps } from "../hook/useCart";
 
-export const addToCart = async (product: ProductProps) => {
-  const res = await fetch(`${CART_API}?id=${product.id}`);
-  const existing = await res.json();
+const API_URL = "http://localhost:3000/cart";
 
-  if (existing.length > 0) {
-    const item = existing[0];
-    await fetch(`${CART_API}/${item.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ quantity: item.quantity + 1 }),
-    });
-  } else {
-    await fetch(CART_API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...product, quantity: 1 }),
-    });
-  }
+export const fetchCart = async () => {
+  const res = await fetch(API_URL);
+  return await res.json();
 };
 
-export const getCart = async (): Promise<CartItem[]> => {
-  const res = await fetch(CART_API);
-  return res.json();
+export const addNewCartItem = async (product: ProductProps) => {
+  return await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...product, quantity: 1 }),
+  });
+};
+
+export const updateCartItem = async (id: string, quantity: number) => {
+  return await fetch(`${API_URL}/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ quantity }),
+  });
+};
+
+export const deleteCartItem = async (id: string) => {
+  return await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
 };

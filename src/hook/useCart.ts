@@ -1,4 +1,10 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import {
+  fetchCart,
+  addNewCartItem,
+  updateCartItem,
+  deleteCartItem,
+} from "../server/cartService";
 
 export interface ProductProps {
   id: string;
@@ -10,49 +16,56 @@ export interface ProductProps {
 
 export type CartItem = ProductProps & { quantity: number };
 
-export interface ProductComponentProps {
-  products: ProductProps[];
-  addToCart?: (product: ProductProps) => void;
-}
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = useCallback((product: ProductProps) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+  useEffect(() => {
+    refreshCart();
+  }, []);
+
+  const refreshCart = async () => {
+    const data = await fetchCart();
+    setCartItems(data);
+  };
+
+  const addToCart = useCallback(
+    async (product: ProductProps) => {
+      const existing = cartItems.find((item) => item.id === product.id);
       if (existing) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+        await updateCartItem(product.id, existing.quantity + 1);
+      } else {
+        await addNewCartItem(product);
       }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-  }, []);
+      refreshCart();
+    },
+    [cartItems]
+  );
 
-  const removeFromCart = useCallback((id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  }, []);
+  const increase = useCallback(
+    async (id: string) => {
+      const item = cartItems.find((i) => i.id === id);
+      if (item) {
+        await updateCartItem(id, item.quantity + 1);
+        refreshCart();
+      }
+    },
+    [cartItems]
+  );
 
-  const increase = useCallback((id: string) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  }, []);
+  const decrease = useCallback(
+    async (id: string) => {
+      const item = cartItems.find((i) => i.id === id);
+      if (item && item.quantity > 1) {
+        await updateCartItem(id, item.quantity - 1);
+        refreshCart();
+      }
+    },
+    [cartItems]
+  );
 
-  const decrease = useCallback((id: string) => {
-    setCartItems((prev) =>
-      prev
-        .map((item) =>
-          item.id === id
-            ? { ...item, quantity: Math.max(1, item.quantity - 1) }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
+  const removeFromCart = useCallback(async (id: string) => {
+    await deleteCartItem(id);
+    refreshCart();
   }, []);
 
   const total = useMemo(() => {
