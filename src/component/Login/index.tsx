@@ -1,7 +1,7 @@
 import { Button, PasswordInput, TextInput } from "@mantine/core";
 import Typography from "../Typography";
 import { hasLength, isEmail, useForm } from "@mantine/form";
-import InputStyleLogin from "../../styles/inputLogin";
+import InputStyleLogin from "@/styles/inputLogin";
 
 export interface LoginUser {
   email: string;

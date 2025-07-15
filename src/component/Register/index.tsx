@@ -1,8 +1,8 @@
 import Typography from "../Typography";
 import { useForm } from "@mantine/form";
-import InputStyleRegister from "../../styles/inputRegister";
 import { Button, PasswordInput, TextInput } from "@mantine/core";
-import { validateForm } from "../../utils/initialValues";
+import InputStyleRegister from "@/styles/inputRegister";
+import { validateForm } from "@/utils/initialValues";
 
 export interface User {
   firstName: string;

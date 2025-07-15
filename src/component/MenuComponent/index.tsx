@@ -1,22 +1,11 @@
-import { Button, Menu } from "@mantine/core";
 import Cart from "../Cart";
-import { CartItem } from "../../hook/useCart";
+import { useCart } from "../../context/CartContext";
+import { Button, Menu } from "@mantine/core";
 
-interface ProductComponentProps {
-  products: CartItem[];
-  increase: (id: string) => void;
-  decrease: (id: string) => void;
-  removeFromCart: (id: string) => void;
-  total: number;
-}
+const MenuComponent = () => {
+  const { state, increase, decrease, removeFromCart, total } = useCart();
+  const products = state.items;
 
-const MenuComponent = ({
-  products,
-  increase,
-  decrease,
-  removeFromCart,
-  total,
-}: ProductComponentProps) => {
   return (
     <Menu shadow="md" width={500}>
       <Menu.Target>
@@ -45,14 +34,14 @@ const MenuComponent = ({
                   </span>
                   <div className="flex items-center gap-2">
                     <button
-                      className="w-1 h-2 bg-gray-50 rounded flex items-center justify-center hover:opacity-90 focus:outline-none"
+                      className="w-8 h-6 bg-gray-50 rounded flex items-center justify-center hover:opacity-90"
                       onClick={() => decrease(product.id)}
                     >
                       -
                     </button>
                     <span>{product.quantity}</span>
                     <button
-                      className="w-1 h-2 bg-gray-50 rounded flex items-center justify-center hover:opacity-90 focus:outline-none"
+                      className=" w-8 h-6 bg-gray-50 rounded flex items-center justify-center hover:opacity-90"
                       onClick={() => increase(product.id)}
                     >
                       +
@@ -60,14 +49,13 @@ const MenuComponent = ({
                   </div>
                 </div>
                 <button
-                  className="bg-primary-red text-white text-sm rounded hover:opacity-90 focus:outline-none focus:ring-0"
+                  className="p-2 bg-primary-red text-white-100 text-sm rounded hover:opacity-90"
                   onClick={() => removeFromCart(product.id)}
                 >
                   Xoá
                 </button>
               </div>
             ))}
-
             <div className="p-4 flex justify-between items-center font-semibold text-base">
               <span>Tổng cộng:</span>
               <span className="text-gray-100">{total.toLocaleString()}₫</span>
