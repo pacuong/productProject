@@ -54,26 +54,26 @@
   ],
   "cart": [
     {
+      "id": "1",
+      "name": "Giày Nike Air Jordan",
+      "price": 120,
+      "titleProduct": "Với thiết kế mang tính biểu tượng kết hợp hoàn hảo với mọi 'fit', đôi giày này đảm bảo bạn sẽ luôn đúng phong cách.",
+      "image": "../../../src/assets/img/Nike Air Jordan.jpg",
+      "quantity": 2
+    },
+    {
       "id": "2",
       "name": "Giày Nike Air Force 1",
       "price": 135,
       "titleProduct": "Đôi giày mang phong cách cổ điển và hiện đại cùng lúc.",
       "image": "../../../src/assets/img/Nike Air Jordan.jpg",
-      "quantity": 2
+      "quantity": 3
     },
     {
       "id": "3",
       "name": "Giày Adidas Superstar",
       "price": 110,
       "titleProduct": "Phong cách đường phố kết hợp độ bền vượt trội.",
-      "image": "../../../src/assets/img/Nike Air Jordan.jpg",
-      "quantity": 1
-    },
-    {
-      "id": "4",
-      "name": "Giày Converse Chuck Taylor",
-      "price": 90,
-      "titleProduct": "Biểu tượng bất tử cho giới trẻ năng động.",
       "image": "../../../src/assets/img/Nike Air Jordan.jpg",
       "quantity": 1
     }

@@ -1,14 +1,5 @@
-import '@mantine/core/styles.css'
-import '@mantine/dates/styles.css'
-import '@mantine/notifications/styles.css'
-import {
-  MantineProvider,
-  type MantineThemeOverride,
-} from '@mantine/core';
+import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import '@mantine/notifications/styles.css';
 
 const fontFamily = 'Segoe UI, sans-serif';
 
