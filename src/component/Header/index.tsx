@@ -1,33 +1,12 @@
-import SearchButton from "../Button";
-import SearchInput from "../Input";
-import { useState } from "react";
-import MenuComponent from "../Menu";
-import { CartItem } from "../../hook/useCart";
+import SearchButton from "@/component/Button/";
+import SearchInput from "@/component/Input";
+import MenuComponent from "@/component/MenuComponent";
+import { useProductSearch } from "@/hook/useProductSearch";
+import Product from "../Product";
 
-interface HeaderMainProps {
-  cart: CartItem[];
-  increase: (id: string) => void;
-  decrease: (id: string) => void;
-  removeFromCart: (id: string) => void;
-  total: number;
-}
-
-const HeaderMain = ({
-  cart,
-  increase,
-  decrease,
-  removeFromCart,
-  total,
-}: HeaderMainProps) => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSearch = (e?: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e ? e.target.value : "");
-  };
-
-  const handleSearchValue = () => {
-    handleSearch();
-  };
+const HeaderMain = () => {
+  const { searchValue, handleSearch, handleSearchValue, product } =
+    useProductSearch();
 
   return (
     <div className="p-2 px-16 bg-blue-25">
@@ -37,11 +16,17 @@ const HeaderMain = ({
           src="../../../src/assets/img/adidas.avif"
           alt="Logo"
         />
-        <div className="flex items-center gap-10">
+        <nav className="flex items-center gap-10">
           <ul className="flex text-lg text-white-25 gap-10">
-            <li>Trang chủ</li>
-            <li>Sản phẩm</li>
-            <li>Liên Hệ</li>
+            <li>
+              <a href="#1">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#2">Sản phẩm</a>
+            </li>
+            <li>
+              <a href="#3">Liên Hệ</a>
+            </li>
           </ul>
           <div className="flex items-center gap-2 w-full max-w-60 rounded-xl">
             <SearchInput
@@ -52,15 +37,18 @@ const HeaderMain = ({
             />
             <SearchButton onSearch={handleSearchValue} />
           </div>
-          <MenuComponent
-            products={cart}
-            increase={increase}
-            decrease={decrease}
-            removeFromCart={removeFromCart}
-            total={total}
-          />
-        </div>
+          <MenuComponent />
+        </nav>
       </div>
+
+      {product.length > 0 && (
+        <Product
+          products={product}
+          addToCart={async (product) => {
+            console.log("Thêm vào giỏ:", product);
+          }}
+        />
+      )}
     </div>
   );
 };

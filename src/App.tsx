@@ -1,7 +1,11 @@
-import HomePage from "./Page/homePage";
+import Counter from "./component/Counter";
 
-const App = () => {
-  return <HomePage />;
-};
+function App() {
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
+}
 
 export default App;

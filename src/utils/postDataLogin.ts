@@ -1,5 +1,6 @@
-import { LoginUser } from "../component/Login";
-import { getData } from "../server/getData";
+import { LoginUser } from "@/component/Login";
+import { getData } from "@/server/getData";
+
 import bcrypt from "bcryptjs";
 
 const handleLoginForm = async (userCredentials: LoginUser) => {
@@ -32,4 +33,4 @@ const handleLoginForm = async (userCredentials: LoginUser) => {
   }
 };
 
-export default handleLoginForm;  
+export default handleLoginForm;

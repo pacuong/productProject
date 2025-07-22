@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetcher } from "../server/getProduct";
-import { ProductProps } from "./useCart";
+import { fetcher } from "@/server/getProduct";
+import { ProductProps } from "@/types/cart";
+
 
 export const useProductList = () => {
   const [productList, setProductList] = useState<ProductProps[]>([]);

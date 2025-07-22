@@ -1,5 +1,6 @@
-import { User } from "../component/Register";
-import { postData } from "../server/postData";
+import { User } from "@/component/Register";
+import { postData } from "@/server/postData";
+
 import bcrypt from "bcryptjs";
 
 const handleRegisterForm = async (userData: User) => {

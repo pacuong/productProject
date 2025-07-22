@@ -1,6 +1,5 @@
-// src/services/cartService.ts
+import { ProductProps } from "@/types/cart";
 
-import { ProductProps } from "../hook/useCart";
 
 const API_URL = "http://localhost:3000/cart";
 
