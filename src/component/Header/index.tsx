@@ -1,18 +1,12 @@
 import SearchButton from "@/component/Button/";
 import SearchInput from "@/component/Input";
 import MenuComponent from "@/component/MenuComponent";
-import { useState } from "react";
+import { useProductSearch } from "@/hook/useProductSearch";
+import Product from "../Product";
 
 const HeaderMain = () => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSearch = (e?: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e ? e.target.value : "");
-  };
-
-  const handleSearchValue = () => {
-    handleSearch();
-  };
+  const { searchValue, handleSearch, handleSearchValue, product } =
+    useProductSearch();
 
   return (
     <div className="p-2 px-16 bg-blue-25">
@@ -46,6 +40,15 @@ const HeaderMain = () => {
           <MenuComponent />
         </nav>
       </div>
+
+      {product.length > 0 && (
+        <Product
+          products={product}
+          addToCart={async (product) => {
+            console.log("Thêm vào giỏ:", product);
+          }}
+        />
+      )}
     </div>
   );
 };

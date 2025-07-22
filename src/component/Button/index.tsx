@@ -9,10 +9,10 @@ const SearchButton = ({ name, onSearch }: ButtonSearchProps) => {
   return (
     <button
       onClick={onSearch}
-      className="focus:outline-none p-2 hover:bg-green-100 rounded-full transition-colors duration-200"
+      className="focus:outline-none p-2 bg-yellow-golden hover:bg-green-100 rounded-full transition-colors duration-200"
     >
       {name}
-      <MagnifyingGlassCircleIcon className="w-6 h-6 text-blue-25 hover:text-blue-100" />
+      <MagnifyingGlassCircleIcon className="w-6 h-6 text-white-100 hover:texttext-white-100" />
     </button>
   );
 };

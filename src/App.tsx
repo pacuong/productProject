@@ -1,11 +1,11 @@
-import HomePage from "./pages/homePage";
+import Counter from "./component/Counter";
 
-const App = () => {
+function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <HomePage />
+    <div>
+      <Counter />
     </div>
   );
-};
+}
 
 export default App;
